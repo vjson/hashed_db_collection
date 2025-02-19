@@ -66,3 +66,12 @@ For licensing analysis purposes, the SA :
 2. Coded (masked) data cannot be decoded. i.e. if a malicious actor gets hold of masked data string they won't be able to decode it to it's original text.
 3. Data Masking will always be the same. i.e. “MongoDB” will always be masked/redacted to a string (for eg.) “FlexibleDocumentDB”.
 4. Users can now run queries on the collection/view and then query, join masked or clear text data as per their choice, and potentially create report only based on masked data.
+
+
+##
+**Sample Output**
+
+![Sample_output](https://github.com/user-attachments/assets/7939929b-01f4-4e09-a7de-b6081ef93360)
+
+
+
