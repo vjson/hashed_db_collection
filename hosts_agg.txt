@@ -1,0 +1,48 @@
+[
+    {$match: {
+        $and: [
+          {   'slt': {   $gte: ISODate('2024-08-01')    }    },
+          {   'hostInfo.system.numCores': {  $ne: null  }    },
+          {   'hostInfo.system.memLimitMB': { $ne: null }    },
+          {   'hostInfo.system.memSizeMB': { $ne: null  }    },
+          {   'rsid': {  $ne:  null                     }    }
+        ]
+    }}, 
+    {$group: {
+        _id: '$rsid',
+        nodes: {      $sum: 1        },
+        version: {    $first: '$v'     },
+        hostname: {   $first: '$hostInfo.system.hostname'  },
+        uptime: {     $first: '$slt'        },
+        sharding: {   $first: '$cmdLineOpts.parsed.sharding'       },
+        ramLimitMB: { $first: '$hostInfo.system.memLimitMB'        },
+        ramSizeMB: {  $first: '$hostInfo.system.memSizeMB'        },
+        cores: {      $first: '$hostInfo.system.numCores'        },
+        binaries: {$first: '$cmdLineOpts.argv'},
+        modules: {$first: '$modules'},
+        certiKey: {$first: "$cmdLineOpts.parsed.net.tls.certificateKeyFile"},
+    }}, 
+    {$project: {
+        nodes: '$nodes',
+        version: '$version',
+        hostname: '$hostname',
+        uptime: '$uptime',
+        sharding: '$sharding',
+        ramLimitGB: {
+          $round: [
+            {  $divide: [  '$ramLimitMB',   1000   ]  },   0
+          ]
+        },
+        ramSizeGB: {
+          $round: [
+            {  $divide: [  '$ramSizeMB',    1000   ]  },   0
+          ]
+        },
+        cores: '$cores',
+        bizUnit1: { $arrayElemAt: [ { $split: [ "$hostname", "-"] } , 0 ] },
+        bizUnit2: { $arrayElemAt: [ { $split: [ "$hostname", "-"] } , 1 ] },
+        binaries: {$toString: { $arrayElemAt: ["$binaries" , 0]}},
+        modules: {$toString: { $arrayElemAt: ["$modules" , 0]}},
+        certKey: '$certiKey'
+    }}, 
+]
