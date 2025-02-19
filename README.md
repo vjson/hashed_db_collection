@@ -56,12 +56,13 @@ For licensing analysis purposes, the SA :
 3. Project the relevant fields required from the collection.
 
 **coll_hash.py** : This is python script that :
-1. Takes input from you for name of db collection and the list of fields you want to hash in that collection.
+1. Takes input from you for name of db collection and the list of fields you want to hash in that collection. (verify and change the values for "db", "collection, "fields_to_hash" as needed)
 2. Creates new hashed fields in the same collection.
 3. Hashed and Clear text fields exist in same collection. Once done, you can either, create a view with read access granted on only this view, or grant select on hashed fields in the collection via RBAC to all users.
 
 ##
 *A couple comments while using coll_hash.py script*
-1. Coded (masked) data cannot be decoded. i.e. if a malicious actor gets hold of masked data string they won't be able to decode it to it's original text.
-2. Data Masking will always be the same. i.e. “MongoDB” will always be masked/redacted to a string (for eg.) “FlexibleDocumentDB”.
-3. Users can now run queries on the collection/view and then query, join masked or clear text data as per their choice, and potentially create report only based on masked data.
+1. It may take some time to populate hashed fields in the collection depending on amount of data and the no of fields involved.
+2. Coded (masked) data cannot be decoded. i.e. if a malicious actor gets hold of masked data string they won't be able to decode it to it's original text.
+3. Data Masking will always be the same. i.e. “MongoDB” will always be masked/redacted to a string (for eg.) “FlexibleDocumentDB”.
+4. Users can now run queries on the collection/view and then query, join masked or clear text data as per their choice, and potentially create report only based on masked data.
