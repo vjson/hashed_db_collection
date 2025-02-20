@@ -2,7 +2,8 @@
 
 ## **Hashed data in a DB collection**
 
-**Purpose** : MongoDB Ops Manager Diagnostic Reports are utilized to extract and transmit metadata for troubleshooting and data analysis related to licensing. To ensure data sensitivity during the analysis of these reports, hashing data within a MongoDB collection is necessary to protect and anonymize sensitive information.
+**Purpose** : A MongoDB Ops Manager diagnostic report, often called a "diag report," is a comprehensive collection of data gathered by the Ops Manager tool that provides detailed insights into the health and performance of your MongoDB deployments, including metrics on database operations, system resource usage, and potential issues, allowing administrators to troubleshoot and identify problems within their MongoDB clusters. 
+MongoDB Ops Manager Diagnostic Reports are also utilized to extract and transmit metadata for data analysis related to licensing. To ensure data sensitivity during the analysis of these reports, hashing data within a MongoDB collection is necessary to protect and anonymize sensitive information.
 
 Customer SREs and/or DBAs are requested by MongoDB Support or Product/Sales team members to generate MongoDB Ops Manager Diagnostic Reports to help troubleshoot, monitor, and analyze the health of MongoDB clusters. These reports capture performance metrics, logs, and system information to assist in diagnosing issues.
 
