@@ -41,7 +41,7 @@ Ops Manager Diag report(s) are then uploaded to the support ticket which is then
 
 For licensing analysis purposes, the SA :
 
-1. Downloads these Diag reports from the Support Ticket.
+1. Downloads these Diag reports from the Support Ticket, or from https://diagnostics.support.mongodb.com/ for the customer you are working for. 
 2. Unzip the ‘diagnostics_<<date>>.tar.gz’ on your local machine.
 3. Locate ‘hosts.json’ file in the extracted folder.
 4. Import the ‘hosts.json’ file in an empty DB collection. For eg. In MongoDB Compass, use the “Add Data” > “Import JSON or csv file” option to upload hosts.json file in an empty DB collection.
